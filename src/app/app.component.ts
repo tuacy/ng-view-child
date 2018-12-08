@@ -22,6 +22,9 @@ import {StringTokenService} from './string-token-service';
     <input appTestDirective #divTestDirective="appTest"/>
     <br/>
     <input appTestDirective/>
+    <ng-template>
+      <div></div>
+    </ng-template>
   `,
   styleUrls: ['./app.component.less']
 })
@@ -42,6 +45,9 @@ export class AppComponent implements AfterViewInit {
   /**** provider ****/
   @ViewChild(ChildService) childService: ChildService;
   @ViewChild('tokenService') tokenService: StringTokenService;
+  /**** @ViewChild(TemplateRef) @ViewChildren(TemplateRef)获取页面上的ng-template节点信息 ****/
+  @ViewChild(TemplateRef) template: TemplateRef<any>;
+  @ViewChildren(TemplateRef) templateList: QueryList<TemplateRef<any>>;
 
   ngAfterViewInit(): void {
     // DOM节点
